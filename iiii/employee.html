@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #007bff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 80%;
+            background-color: #007bff;
+        }
+
+        .form-container, .output-container {
+            width: 48%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2, .output-container h2 {
+            margin-top: 0;
+            color: #000000;
+            font-size: 40px;
+        }
+
+        input, select {
+            margin: 10px 0;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            display: none;
+        }
+
+        .output-item {
+            margin-bottom: 15px;
+            font-size: 30px;
+        }
+
+        .output-item span {
+            font-weight: bold;
+            color: #0e0c0c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Employee Form</h1>
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="emp-id" placeholder="Employee ID">
+            <input type="text" id="position" placeholder="Position">
+            <input type="text" id="department" placeholder="Department">
+            <button id="submit-btn">Submit</button>
+        </div>
+        <div class="output-container" id="output">
+            <h2>Employee Information</h2>
+            <div class="output-item"><span>Name:</span> <span id="output-name"></span></div>
+            <div class="output-item"><span>Employee ID:</span> <span id="output-emp-id"></span></div>
+            <div class="output-item"><span>Position:</span> <span id="output-position"></span></div>
+            <div class="output-item"><span>Department:</span> <span id="output-department"></span></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function () {
+            const name = document.getElementById('name').value;
+            const empId = document.getElementById('emp-id').value;
+            const position = document.getElementById('position').value;
+            const department = document.getElementById('department').value;
+
+            if (name && empId && position && department) {
+                document.getElementById('output-name').textContent = name;
+                document.getElementById('output-emp-id').textContent = empId;
+                document.getElementById('output-position').textContent = position;
+                document.getElementById('output-department').textContent = department;
+
+                document.getElementById('output').style.display = 'block';
+
+                document.getElementById('name').value = '';
+                document.getElementById('emp-id').value = '';
+                document.getElementById('position').value = '';
+                document.getElementById('department').value = '';
+            } else {
+                alert('Please fill out all fields before submitting.');
+            }
+        });
+    </script>
+</body>
+</html>
